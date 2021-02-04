@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podmanifest
+  label:
+    app: frontend
+    env: dev
+spec:
+  containers:
+    - name: web-server-1
+      image: nginx
+      ports:
+        - name: web
+          containerPort: 82
+          protocol: TCP
+---
+
+kind: Pod
+metadata:
+  name: podmanifest2
+  label:
+    app: backend
+    env: dev
+spec:
+  containers:
+    - name: web-server-2
+      image: nginx
+      ports:
+        - name: web
+          containerPort: 82
+          protocol: TCP

@@ -1,0 +1,13 @@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<div id="app"></div>
+
+<script>
+    let div = document.getElementById('app');
+
+    axios.get('http://localhost:31624')
+        .then(response => {
+            console.log(response);
+            div.innerHTML = "<p> Hora: " + response.data.time + "</p><p>Hostname:" + response.data.hostname + "</p>";
+        })
+        .catch(error => console.log(error));
+</script>

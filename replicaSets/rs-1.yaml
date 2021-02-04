@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs-test
+  labels:
+    app: rs-test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pod-label  #selecciona o crea pods con este label, pueden ser mas
+  template: # El template es la definicion del pod que se quiere crear
+    metadata:
+      name: rs-test-pod
+      labels:
+        app: pod-label
+    spec:
+      containers:
+        - name: web-server
+          image: nginx
+          ports:
+            - name: web
+              containerPort: 82
+              protocol: TCP
